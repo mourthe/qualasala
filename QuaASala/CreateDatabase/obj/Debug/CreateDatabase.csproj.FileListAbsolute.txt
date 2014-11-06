@@ -3,3 +3,4 @@ C:\Users\Fabio\Documents\GitHub\qualasala\QuaASala\CreateDatabase\bin\Debug\Crea
 C:\Users\Fabio\Documents\GitHub\qualasala\QuaASala\CreateDatabase\bin\Debug\CreateDatabase.pdb
 C:\Users\Fabio\Documents\GitHub\qualasala\QuaASala\CreateDatabase\obj\Debug\CreateDatabase.exe
 C:\Users\Fabio\Documents\GitHub\qualasala\QuaASala\CreateDatabase\obj\Debug\CreateDatabase.pdb
+C:\Users\Fabio\Documents\GitHub\qualasala\QuaASala\CreateDatabase\obj\Debug\CreateDatabase.csprojResolveAssemblyReference.cache

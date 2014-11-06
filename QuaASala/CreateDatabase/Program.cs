@@ -40,10 +40,29 @@ namespace CreateDatabase
                 Console.WriteLine(exception.Message + "\n" + exception.InnerException);
             }
 
+            // create and fill the dictionary
+            var tuples = new Dictionary<string, Tuple>();
+            foreach (var tuple in rooms)
+            {
+                var key = tuple.Sala + "," + tuple.HorarioIni + "," + tuple.HorarioFin;
+
+                // check if there is a tuple with the same id on the dictionary
+                if (!tuples.ContainsKey(key))
+                {
+                    tuples.Add(key, tuple);
+                }
+                // there is a key 
+                else
+                {
+                    tuples[key] = Tuple.MergeTwoTuples(tuples[key], tuple);
+                }
+            }
+
             Console.WriteLine("Terminou.");
-            Console.WriteLine("Tamanho: " + rooms.Count);
-            Console.WriteLine("Exemplo: " + rooms.ElementAt(3000).ToString());
-            
+            Console.WriteLine("Tamanho lista: " + rooms.Count);
+            Console.WriteLine("Tamanho dicionario: " + tuples.Keys.Count);
+            Console.WriteLine("Exemplo lista: " + rooms.ElementAt(3000));
+            Console.WriteLine("Exemplo dicionario: " + tuples.ElementAt(500));
         }
     }
 }

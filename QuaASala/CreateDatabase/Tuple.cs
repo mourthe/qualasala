@@ -20,6 +20,18 @@ namespace CreateDatabase
             Sala = sala;
         }
 
+        private Tuple(string sala, string horarioIni, string horarioFin, bool seg, bool ter, bool qua, bool qui, bool sex)
+        {
+            Sex = sex;
+            Qui = qui;
+            Qua = qua;
+            Ter = ter;
+            Seg = seg;
+            HorarioFin = horarioFin;
+            HorarioIni = horarioIni;
+            Sala = sala;
+        } 
+
         public string Sala { get; private set; }
         public string HorarioIni { get; private set; }
         public string HorarioFin { get; private set; }
@@ -32,6 +44,23 @@ namespace CreateDatabase
         public override string ToString()
         {
             return Sala + "," + HorarioIni + "," + HorarioFin + "," + Seg + "," + Ter + "," + Qua + "," + Qui + "," + Sex;
+        }
+
+        public static Tuple MergeTwoTuples(Tuple tuple1, Tuple tuple2)
+        {
+            if (tuple1.Sala.Equals(tuple2.Sala) && tuple1.HorarioFin.Equals(tuple2.HorarioFin)
+                && tuple1.HorarioIni.Equals(tuple2.HorarioIni))
+            {
+                return new Tuple(tuple1.Sala, tuple1.HorarioIni, tuple1.HorarioFin, tuple1.Seg || tuple2.Seg,
+                                                                                    tuple1.Ter || tuple2.Ter,
+                                                                                    tuple1.Qua || tuple2.Qua,
+                                                                                    tuple1.Qui || tuple2.Qui,
+                                                                                    tuple1.Sex || tuple2.Sex);
+            }
+            else
+            {
+                throw new Exception("Tuples not compatible.");
+            }
         }
     }
 }
