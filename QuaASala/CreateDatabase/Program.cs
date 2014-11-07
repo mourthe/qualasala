@@ -27,8 +27,9 @@ namespace CreateDatabase
                     var line = reader.ReadLine();
                     var values = line.Split(',');
 
-                    // if the first value is empty continue
-                    if (values[0].Equals(string.Empty)) 
+                    // if the first value is empty, lab, rdc or dpto continue
+                    if (values[0].Equals(string.Empty) || values[0].Equals("RDC") 
+                            || values[0].Equals("LAB") || values[0].Equals("DPTO")) 
                         continue;
 
                     rooms.Add(new Tuple(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]));
@@ -37,7 +38,7 @@ namespace CreateDatabase
             catch (FileNotFoundException exception)
             {
                 Console.WriteLine("Something went wrong:");
-                Console.WriteLine(exception.Message + "\n" + exception.InnerException);
+                Console.WriteLine(exception.Message + "\n" + exception.InnerException.Message);
             }
 
             // create and fill the dictionary
@@ -62,7 +63,7 @@ namespace CreateDatabase
             Console.WriteLine("Tamanho lista: " + rooms.Count);
             Console.WriteLine("Tamanho dicionario: " + tuples.Keys.Count);
             Console.WriteLine("Exemplo lista: " + rooms.ElementAt(3000));
-            Console.WriteLine("Exemplo dicionario: " + tuples.ElementAt(500));
+            Console.WriteLine("Exemplo dicionario: " + tuples.ElementAt(501));
         }
     }
 }
