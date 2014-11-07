@@ -15,12 +15,17 @@ namespace CreateDatabase.Database
             var props = TypeDescriptor.GetProperties(typeof(T));
             var table = new DataTable();
             
+            // create the columns
             for (var i = 0; i < props.Count; i++)
             {
                 var prop = props[i];
                 table.Columns.Add(prop.Name, prop.PropertyType);
+
+                // cant be null
+                table.Columns[i].AllowDBNull = false;
             }
 
+            // fills the table
             var values = new object[props.Count];
             foreach (var item in data)
             {
@@ -30,6 +35,14 @@ namespace CreateDatabase.Database
                 }
                 table.Rows.Add(values);
             }
+
+            // set the primary key using DataColumn
+            table.PrimaryKey = new[]
+            {
+                table.Columns["Sala"],
+                table.Columns["HorarioIni"],
+                table.Columns["HorarioFin"]
+            };
 
             return table;
         }

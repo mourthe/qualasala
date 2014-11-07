@@ -15,6 +15,9 @@ namespace CreateDatabase
             const string path = @"...\..\..\..\docs\Tabela_Salas.csv";
             var reader = new StreamReader(File.OpenRead(path));
 
+            // forbidden room on leme
+            var forbiddenRooms = GetForbiddenRooms("L");
+
             var rooms = new List<Tuple>();
             try
             {
@@ -27,9 +30,10 @@ namespace CreateDatabase
                     var line = reader.ReadLine();
                     var values = line.Split(',');
 
-                    // if the first value is empty, lab, rdc or dpto continue
+                    // if the first value is empty, lab, rdc, dpto or belongs to the forbidden rooms list continue
                     if (values[0].Equals(string.Empty) || values[0].Equals("RDC") 
-                            || values[0].Equals("LAB") || values[0].Equals("DPTO")) 
+                            || values[0].Equals("LAB") || values[0].Equals("DPTO") 
+                            || forbiddenRooms.Contains(values[0])) 
                         continue;
 
                     rooms.Add(new Tuple(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]));
@@ -41,7 +45,7 @@ namespace CreateDatabase
                 Console.WriteLine(exception.Message + "\n" + exception.InnerException.Message);
             }
 
-            // create and fill the dictionary
+            // create and fill the dictionary to merge tuples with the same ID
             var tuples = new Dictionary<string, Tuple>();
             foreach (var tuple in rooms)
             {
@@ -59,11 +63,32 @@ namespace CreateDatabase
                 }
             }
 
+            // Create a list from the dictionary
+            var finalData = tuples.Values.ToList();
+            var datatable = Database.Utils.ConvertToDatatable(finalData);
+
             Console.WriteLine("Terminou.");
             Console.WriteLine("Tamanho lista: " + rooms.Count);
             Console.WriteLine("Tamanho dicionario: " + tuples.Keys.Count);
             Console.WriteLine("Exemplo lista: " + rooms.ElementAt(3000));
             Console.WriteLine("Exemplo dicionario: " + tuples.ElementAt(501));
+        }
+
+
+        private static List<string> GetForbiddenRooms(string prefix)
+        {
+            // create the path and the reader for the forbidden rooms
+            const string path = @"...\..\..\..\docs\Sala_Proibidas_Leme.txt";
+            var reader = new StreamReader(File.OpenRead(path));
+
+            // put the content of the file into a list
+            var rooms = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                rooms.Add(prefix + reader.ReadLine());
+            }
+            
+            return rooms;
         }
     }
 }
