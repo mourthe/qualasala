@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace CreateDatabase
 {
+    [Serializable]
     public class Tuple
     {
         public Tuple(string sala, string horarioIni, string horarioFin, string seg, string ter, string qua, string qui, string sex)
