@@ -36,8 +36,7 @@ namespace CreateDatabase
                         || values[0].Equals("LAC") || values[0].ElementAt(0) == 'C' || values[0].ElementAt(0) == 'D'
                         || forbiddenRooms.Contains(values[0]) || values[0].Equals("LAMAQ") || values[0].Equals("SPA")
                         || values[0].Equals("FB6") || values[0].Equals("LABHD") || values[0].Equals("LBIAG") 
-                        || values[0].Equals("LIENG") || values[0].Equals("PIUES") || values[0].Contains("ARTE")
-) 
+                        || values[0].Equals("LIENG") || values[0].Equals("PIUES") || values[0].Contains("ARTE")) 
                         continue;
 
                     rooms.Add(new Tuple(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]));
@@ -89,7 +88,7 @@ namespace CreateDatabase
             var result = new List<string>();
             GetForbiddenRoomsForBuilding(result, @"...\..\..\..\docs\Sala_Proibidas_Leme.txt", "L");
             GetForbiddenRoomsForBuilding(result, @"...\..\..\..\docs\Sala_Proibidas_Kennedy.txt", "K");
-            //GetForbiddenRoomsForBuilding(out result, @"...\..\..\..\docs\Sala_Proibidas_Leme.txt", "L");
+            GetForbiddenRoomsForBuilding(result, @"...\..\..\..\docs\Sala_Proibidas_Frings.txt", "F");
 
             return result;
         }
