@@ -46,5 +46,10 @@ namespace CreateDatabase.Database
 
             return table;
         }
+
+        public static void SaveDatatableOnCSV(DataTable data)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
