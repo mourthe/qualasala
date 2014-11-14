@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace CreateDatabase
 {
     [Serializable]
-    public class Tuple
+    public class dbTuple
     {
-        public Tuple(string sala, string horarioIni, string horarioFin, string seg, string ter, string qua, string qui, string sex)
+        public dbTuple (string sala, string horarioIni, string horarioFin, string seg, string ter, string qua, string qui, string sex)
         {
             Sex = sex.Contains('1');
             Qui = qui.Contains('1');
@@ -21,7 +21,7 @@ namespace CreateDatabase
             Sala = sala;
         }
 
-        private Tuple(string sala, string horarioIni, string horarioFin, bool seg, bool ter, bool qua, bool qui, bool sex)
+        public dbTuple(string sala, string horarioIni, string horarioFin, bool seg, bool ter, bool qua, bool qui, bool sex)
         {
             Sex = sex;
             Qui = qui;
@@ -51,12 +51,30 @@ namespace CreateDatabase
                                                                     + ConvertToBinary(Sex);
         }
 
-        public static Tuple MergeTwoTuples(Tuple tuple1, Tuple tuple2)
+        /// <summary>
+        /// Returns if the rooms is available  on the requested day
+        /// </summary>
+        /// <param name="day">Needs to follow patern: Monday = seg, Tuesday = ter, Wednesday = qua, Thursday = qui, Friday = sex</param>
+        public bool IsFreeThisDay(string day)
+        {
+            switch (day)
+            {
+                case "seg": return !this.Seg;
+                case "ter": return !this.Ter;
+                case "qua": return !this.Qua;
+                case "qui": return !this.Qui;
+                case "sex": return !this.Sex;
+                default:
+                    throw new  ArgumentException("Day do not belong");
+            }
+        }
+
+        public static dbTuple MergeTwoTuples(dbTuple tuple1, dbTuple tuple2)
         {
             if (tuple1.Sala.Equals(tuple2.Sala) && tuple1.HorarioFin.Equals(tuple2.HorarioFin)
                 && tuple1.HorarioIni.Equals(tuple2.HorarioIni))
             {
-                return new Tuple(tuple1.Sala, tuple1.HorarioIni, tuple1.HorarioFin, tuple1.Seg || tuple2.Seg,
+                return new dbTuple(tuple1.Sala, tuple1.HorarioIni, tuple1.HorarioFin, tuple1.Seg || tuple2.Seg,
                                                                                     tuple1.Ter || tuple2.Ter,
                                                                                     tuple1.Qua || tuple2.Qua,
                                                                                     tuple1.Qui || tuple2.Qui,

@@ -17,8 +17,8 @@ namespace CreateDatabase
 
             // forbidden room on PUC
             var forbiddenRooms = GetForbiddenRooms();
-            
-            var rooms = new List<Tuple>();
+
+            var rooms = new List<dbTuple>();
             try
             {
                 // remove the first line
@@ -39,7 +39,7 @@ namespace CreateDatabase
                         || values[0].Equals("LIENG") || values[0].Equals("PIUES") || values[0].Contains("ARTE")) 
                         continue;
 
-                    rooms.Add(new Tuple(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]));
+                    rooms.Add(new dbTuple(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]));
                 }
             }
             catch (FileNotFoundException exception)
@@ -49,7 +49,7 @@ namespace CreateDatabase
             }
 
             // create and fill the dictionary to merge tuples with the same ID
-            var tuples = new Dictionary<string, Tuple>();
+            var tuples = new Dictionary<string, dbTuple>();
             foreach (var tuple in rooms)
             {
                 var key = tuple.Sala + "," + tuple.HorarioIni + "," + tuple.HorarioFin;
@@ -62,7 +62,7 @@ namespace CreateDatabase
                 // there is a key 
                 else
                 {
-                    tuples[key] = Tuple.MergeTwoTuples(tuples[key], tuple);
+                    tuples[key] = dbTuple.MergeTwoTuples(tuples[key], tuple);
                 }
             }
 
