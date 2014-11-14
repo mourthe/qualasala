@@ -8,5 +8,6 @@ namespace GoClass.Tests
 {
     public class ServiceTest
     {
+
     }
 }
