@@ -48,7 +48,7 @@ namespace CreateDatabase.Database
             return table;
         }
 
-        public static void SaveDataOnCSV(List<dbTuple> data)
+        public static void SaveDataOnCsv(List<DbTuple> data)
         {
             var csv = new StreamWriter(@"...\..\..\..\QuaASala\GoClass\Database\Tabela_Salas.csv");
             foreach (var d in data)

@@ -9,6 +9,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoClass", "GoClass\GoClass.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoClass.WebApp", "GoClass.WebApp\GoClass.WebApp.csproj", "{6E1D71E9-BF01-456C-9EB8-2BA67D5CA5A3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{72A6317C-E716-4CF3-A2F9-FA57B7265F67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GoClass.Tests", "GoClass.Tests\GoClass.Tests.csproj", "{F710D8E6-B80D-4987-B524-5C51FA6AD2B1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{4EC7A179-C865-4552-84E1-D28902CD156D}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,8 +38,15 @@ Global
 		{6E1D71E9-BF01-456C-9EB8-2BA67D5CA5A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6E1D71E9-BF01-456C-9EB8-2BA67D5CA5A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6E1D71E9-BF01-456C-9EB8-2BA67D5CA5A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F710D8E6-B80D-4987-B524-5C51FA6AD2B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F710D8E6-B80D-4987-B524-5C51FA6AD2B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F710D8E6-B80D-4987-B524-5C51FA6AD2B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F710D8E6-B80D-4987-B524-5C51FA6AD2B1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F710D8E6-B80D-4987-B524-5C51FA6AD2B1} = {72A6317C-E716-4CF3-A2F9-FA57B7265F67}
 	EndGlobalSection
 EndGlobal

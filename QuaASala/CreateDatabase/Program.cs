@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CreateDatabase
 {
@@ -18,7 +16,7 @@ namespace CreateDatabase
             // forbidden room on PUC
             var forbiddenRooms = GetForbiddenRooms();
 
-            var rooms = new List<dbTuple>();
+            var rooms = new List<DbTuple>();
             try
             {
                 // remove the first line
@@ -28,6 +26,8 @@ namespace CreateDatabase
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
+                    if (line == null) continue;
+                    
                     var values = line.Split(',');
 
                     // if the first value is empty, lab, rdc, dpto or belongs to the forbidden rooms list continue 
@@ -39,7 +39,7 @@ namespace CreateDatabase
                         || values[0].Equals("LIENG") || values[0].Equals("PIUES") || values[0].Contains("ARTE")) 
                         continue;
 
-                    rooms.Add(new dbTuple(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]));
+                    rooms.Add(new DbTuple(values[0], values[1], values[2], values[3], values[4], values[5], values[6], values[7]));
                 }
             }
             catch (FileNotFoundException exception)
@@ -49,7 +49,7 @@ namespace CreateDatabase
             }
 
             // create and fill the dictionary to merge tuples with the same ID
-            var tuples = new Dictionary<string, dbTuple>();
+            var tuples = new Dictionary<string, DbTuple>();
             foreach (var tuple in rooms)
             {
                 var key = tuple.Sala + "," + tuple.HorarioIni + "," + tuple.HorarioFin;
@@ -62,7 +62,7 @@ namespace CreateDatabase
                 // there is a key 
                 else
                 {
-                    tuples[key] = dbTuple.MergeTwoTuples(tuples[key], tuple);
+                    tuples[key] = DbTuple.MergeTwoTuples(tuples[key], tuple);
                 }
             }
 
@@ -75,7 +75,7 @@ namespace CreateDatabase
             Console.WriteLine("Exemplo dicionario: " + tuples.ElementAt(501));
 
             // save the datatable on a csv file
-            Database.Utils.SaveDataOnCSV(finalData);
+            Database.Utils.SaveDataOnCsv(finalData);
 
             Console.WriteLine("Terminou.");
         }

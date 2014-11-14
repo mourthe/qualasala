@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CreateDatabase
 {
     [Serializable]
-    public class dbTuple
+    public class DbTuple
     {
-        public dbTuple (string sala, string horarioIni, string horarioFin, string seg, string ter, string qua, string qui, string sex)
+        public DbTuple (string sala, string horarioIni, string horarioFin, string seg, string ter, string qua, string qui, string sex)
         {
             Sex = sex.Contains('1');
             Qui = qui.Contains('1');
@@ -21,7 +18,7 @@ namespace CreateDatabase
             Sala = sala;
         }
 
-        public dbTuple(string sala, string horarioIni, string horarioFin, bool seg, bool ter, bool qua, bool qui, bool sex)
+        public DbTuple(string sala, string horarioIni, string horarioFin, bool seg, bool ter, bool qua, bool qui, bool sex)
         {
             Sex = sex;
             Qui = qui;
@@ -59,31 +56,29 @@ namespace CreateDatabase
         {
             switch (day)
             {
-                case "seg": return !this.Seg;
-                case "ter": return !this.Ter;
-                case "qua": return !this.Qua;
-                case "qui": return !this.Qui;
-                case "sex": return !this.Sex;
+                case "seg": return !Seg;
+                case "ter": return !Ter;
+                case "qua": return !Qua;
+                case "qui": return !Qui;
+                case "sex": return !Sex;
                 default:
                     throw new  ArgumentException("Day do not belong");
             }
         }
 
-        public static dbTuple MergeTwoTuples(dbTuple tuple1, dbTuple tuple2)
+        public static DbTuple MergeTwoTuples(DbTuple tuple1, DbTuple tuple2)
         {
             if (tuple1.Sala.Equals(tuple2.Sala) && tuple1.HorarioFin.Equals(tuple2.HorarioFin)
                 && tuple1.HorarioIni.Equals(tuple2.HorarioIni))
             {
-                return new dbTuple(tuple1.Sala, tuple1.HorarioIni, tuple1.HorarioFin, tuple1.Seg || tuple2.Seg,
+                return new DbTuple(tuple1.Sala, tuple1.HorarioIni, tuple1.HorarioFin, tuple1.Seg || tuple2.Seg,
                                                                                     tuple1.Ter || tuple2.Ter,
                                                                                     tuple1.Qua || tuple2.Qua,
                                                                                     tuple1.Qui || tuple2.Qui,
                                                                                     tuple1.Sex || tuple2.Sex);
             }
-            else
-            {
-                throw new Exception("Tuples not compatible.");
-            }
+            
+            throw new Exception("Tuples not compatible.");
         }
 
         private static string ConvertToBinary(bool b)
