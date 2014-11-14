@@ -39,6 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\CreateDatabase\dbTuple.cs">
+      <Link>dbTuple.cs</Link>
+    </Compile>
+    <Compile Include="Database.cs" />
     <Compile Include="Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
