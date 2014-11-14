@@ -44,7 +44,11 @@ namespace CreateDatabase
 
         public override string ToString()
         {
-            return Sala + "," + HorarioIni + "," + HorarioFin + "," + Seg + "," + Ter + "," + Qua + "," + Qui + "," + Sex;
+            return Sala + "," + HorarioIni + "," + HorarioFin + "," + ConvertToBinary(Seg) + ","
+                                                                    + ConvertToBinary(Ter) + ","
+                                                                    + ConvertToBinary(Qua) + ","
+                                                                    + ConvertToBinary(Qui) + ","
+                                                                    + ConvertToBinary(Sex);
         }
 
         public static Tuple MergeTwoTuples(Tuple tuple1, Tuple tuple2)
@@ -62,6 +66,11 @@ namespace CreateDatabase
             {
                 throw new Exception("Tuples not compatible.");
             }
+        }
+
+        private static string ConvertToBinary(bool b)
+        {
+            return b ? "1" : "0";
         }
     }
 }

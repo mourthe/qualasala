@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace CreateDatabase.Database
 {
@@ -47,9 +48,14 @@ namespace CreateDatabase.Database
             return table;
         }
 
-        public static void SaveDatatableOnCSV(DataTable data)
+        public static void SaveDataOnCSV(List<Tuple> data)
         {
-            throw new NotImplementedException();
+            var csv = new StreamWriter(@"...\..\..\..\QuaASala\GoClass\Database\Tabela_Salas.csv");
+            foreach (var d in data)
+            {
+                csv.WriteLine(d.ToString());
+                csv.Flush();
+            }
         }
     }
 }

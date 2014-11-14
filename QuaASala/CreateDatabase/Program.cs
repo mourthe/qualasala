@@ -68,7 +68,6 @@ namespace CreateDatabase
 
             // Create a list from the dictionary
             var finalData = tuples.Values.ToList().OrderBy(x=>x.Sala).ToList();
-            //var datatable = Database.Utils.ConvertToDatatable(finalData);
             
             Console.WriteLine("Tamanho lista: " + rooms.Count);
             Console.WriteLine("Tamanho dicionario: " + tuples.Keys.Count);
@@ -76,7 +75,7 @@ namespace CreateDatabase
             Console.WriteLine("Exemplo dicionario: " + tuples.ElementAt(501));
 
             // save the datatable on a csv file
-            // Database.Utils.SaveDatatableOnCSV(datatable);
+            Database.Utils.SaveDataOnCSV(finalData);
 
             Console.WriteLine("Terminou.");
         }
