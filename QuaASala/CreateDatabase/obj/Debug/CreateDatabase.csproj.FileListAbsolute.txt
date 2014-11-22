@@ -1,6 +1,11 @@
 C:\Users\Fabio\Documents\GitHub\qualasala\QuaASala\CreateDatabase\bin\Debug\CreateDatabase.exe.config
 C:\Users\Fabio\Documents\GitHub\qualasala\QuaASala\CreateDatabase\bin\Debug\CreateDatabase.exe
 C:\Users\Fabio\Documents\GitHub\qualasala\QuaASala\CreateDatabase\bin\Debug\CreateDatabase.pdb
+C:\Users\Fabio\Documents\GitHub\qualasala\QuaASala\CreateDatabase\bin\Debug\Microsoft.Owin.dll
+C:\Users\Fabio\Documents\GitHub\qualasala\QuaASala\CreateDatabase\bin\Debug\Microsoft.Owin.Security.dll
+C:\Users\Fabio\Documents\GitHub\qualasala\QuaASala\CreateDatabase\bin\Debug\Owin.dll
+C:\Users\Fabio\Documents\GitHub\qualasala\QuaASala\CreateDatabase\bin\Debug\Microsoft.Owin.xml
+C:\Users\Fabio\Documents\GitHub\qualasala\QuaASala\CreateDatabase\bin\Debug\Microsoft.Owin.Security.xml
+C:\Users\Fabio\Documents\GitHub\qualasala\QuaASala\CreateDatabase\obj\Debug\CreateDatabase.csprojResolveAssemblyReference.cache
 C:\Users\Fabio\Documents\GitHub\qualasala\QuaASala\CreateDatabase\obj\Debug\CreateDatabase.exe
 C:\Users\Fabio\Documents\GitHub\qualasala\QuaASala\CreateDatabase\obj\Debug\CreateDatabase.pdb
-C:\Users\Fabio\Documents\GitHub\qualasala\QuaASala\CreateDatabase\obj\Debug\CreateDatabase.csprojResolveAssemblyReference.cache

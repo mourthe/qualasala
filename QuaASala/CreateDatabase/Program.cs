@@ -78,6 +78,7 @@ namespace CreateDatabase
             Database.Utils.SaveDataOnCsv(finalData);
 
             Console.WriteLine("Terminou.");
+            Console.ReadLine();
         }
 
 

@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace GoClass
 {
-    public class Service
+    public class GoClassService
     {
         public static IList<string> GetRooms(string time, string day)
         {
-            return Database.GetRoomsFrom(time, day);
+            return Database.GetRoomsFrom(time, day).Distinct().ToList();
         }
     }
 }
