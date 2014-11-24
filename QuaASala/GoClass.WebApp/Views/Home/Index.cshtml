@@ -1,51 +1,94 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
-
+﻿
 @Scripts.Render("~/Scripts/jquery-2.1.1.min.js")
 <script>
     window.onload = function() {
-        $("#coalasala").click(function() {
+        $("#buscar").click(function() {
             $.ajax({
-                url: "/rooms/" + $("#combodahora").val() + "/" + $("#combododia").val(),
+                url: "/rooms/" + $("#hora").val() + "/" + $("#dia").val(),
                 type: "get",
                 contentType: 'application/json',
                 accepts: 'application/json',
                 dataType: "json"
-            }).done(function(data) {
-                data.frings.forEach(function(room) {
-                    $("#rooms-list").append("<li>" + room + "</li>");
+            }).done(function (data) {
+                $("#rooms-list").html("");
+                $("#rooms-list").append("<h4>Salas Frings </h4>");
+                var idx = 0;
+                var string = "";
+                data.frings.forEach(function (room) {
+                    string += (room + " ");
+                    idx++;
+                    if (idx % 7 == 0 || idx == data.frings.length - 1) {
+                        $("#rooms-list").append("<p>" + string + "</p>");
+                        string = "";
+                    }
                 });
-
+                idx = 0;
+                $("#rooms-list").append("<h4>Salas Leme </h4>");
                 data.leme.forEach(function (room) {
-                    $("#rooms-list").append("<li>" + room + "</li>");
+                    string += (room + " ");
+                    idx++;
+                    if (idx % 7 == 0 || idx == data.leme.length - 1) {
+                        $("#rooms-list").append("<p>"  + string + "</p>");
+                        string = "";
+                    }
                 });
+                idx = 0;
+                $("#rooms-list").append("<h4>Salas Kennedy </h4>");
                 data.kennedy.forEach(function (room) {
-                    $("#rooms-list").append("<li>" + room + "</li>");
+                    string += (room + " ");
+                    idx++;
+                    if (idx % 7 == 0 || idx == data.kennedy.length - 1) {
+                        $("#rooms-list").append("<p>" + string + "</p>");
+                        string = "";
+                    }
                 });
             });
         });
     };
 </script>
 
-<div class="jumbotron">
-    <h1>Coal a Sala</h1>
-    <p class="lead"></p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<!--
+    <div class="jumbotron">
+        <h1>Qual a Sala?</h1>
+        <p class="lead"></p>
+        <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    </div>
+    -->
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>Dia e Hora</h2>
-        <!--COLOCAR COMBOS DE DATA AQUI-->
-        <div class="btn btn-default" id="coalasala">Coal a sala?</div>
-    </div>
+    <div class="col-md-4" style="width: 100%" align="center">
+        <h3>Dia da semana</h3>
+        <select id="dia">
+            <option value="seg">Segunda</option>
+            <option value="ter">Terça</option>
+            <option value="qua">Quarta</option>
+            <option value="qui">Quinta</option>
+            <option value="sex">Sexta</option>
+        </select>
+        <select id="hora">
+            <option value="7">7h</option>
+            <option value="8">8h</option>
+            <option value="9">9h</option>
+            <option value="10">10h</option>
+            <option value="11">11h</option>
+            <option value="12">12h</option>
+            <option value="13">13h</option>
+            <option value="14">14h</option>
+            <option value="15">15h</option>
+            <option value="16">16h</option>
+            <option value="17">17h</option>
+            <option value="18">18h</option>
+            <option value="19">19h</option>
+            <option value="20">20h</option>
+            <option value="21">21h</option>
+            <option value="22">22h</option>
+        </select>
 
-    <div id="rooms" class="col-md-8">
-        <h2>Salas</h2>
-        <ul id="rooms-list">
-            
-        </ul>
+        <div class="btn btn-default" id="buscar">Buscar</div>
+        @*</div>
+
+            <div id="rooms" class="col-md-8">*@
+        <ul id="rooms-list"></ul>
 
     </div>
 </div>
