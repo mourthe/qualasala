@@ -11,84 +11,70 @@
                 dataType: "json"
             }).done(function (data) {
                 $("#rooms-list").html("");
-                $("#rooms-list").append("<h4>Salas Frings </h4>");
-                var idx = 0;
-                var string = "";
+                $("#rooms-list").append("<h4 style=\"text-align: center;\">Salas Frings </h4>");
                 data.frings.forEach(function (room) {
-                    string += (room + " ");
-                    idx++;
-                    if (idx % 7 == 0 || idx == data.frings.length - 1) {
-                        $("#rooms-list").append("<p>" + string + "</p>");
-                        string = "";
-                    }
+                    $("#rooms-list").append(room + " ");
+
                 });
-                idx = 0;
-                $("#rooms-list").append("<h4>Salas Leme </h4>");
+                $("#rooms-list").append("<h4 style=\"text-align: center;\">Salas Leme </h4>");
                 data.leme.forEach(function (room) {
-                    string += (room + " ");
-                    idx++;
-                    if (idx % 7 == 0 || idx == data.leme.length - 1) {
-                        $("#rooms-list").append("<p>"  + string + "</p>");
-                        string = "";
-                    }
+                    $("#rooms-list").append(room + " ");
+
                 });
-                idx = 0;
-                $("#rooms-list").append("<h4>Salas Kennedy </h4>");
+                $("#rooms-list").append("<h4 style=\"text-align: center;\">Salas Kennedy </h4>");
                 data.kennedy.forEach(function (room) {
-                    string += (room + " ");
-                    idx++;
-                    if (idx % 7 == 0 || idx == data.kennedy.length - 1) {
-                        $("#rooms-list").append("<p>" + string + "</p>");
-                        string = "";
-                    }
+                    $("#rooms-list").append(room + " ");
+      
                 });
             });
         });
     };
 </script>
 
-<!--
-    <div class="jumbotron">
-        <h1>Qual a Sala?</h1>
-        <p class="lead"></p>
-        <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-    </div>
-    -->
-
 <div class="row">
     <div class="col-md-4" style="width: 100%" align="center">
-        <h3>Dia da semana</h3>
-        <select id="dia">
-            <option value="seg">Segunda</option>
-            <option value="ter">Terça</option>
-            <option value="qua">Quarta</option>
-            <option value="qui">Quinta</option>
-            <option value="sex">Sexta</option>
-        </select>
-        <select id="hora">
-            <option value="7">7h</option>
-            <option value="8">8h</option>
-            <option value="9">9h</option>
-            <option value="10">10h</option>
-            <option value="11">11h</option>
-            <option value="12">12h</option>
-            <option value="13">13h</option>
-            <option value="14">14h</option>
-            <option value="15">15h</option>
-            <option value="16">16h</option>
-            <option value="17">17h</option>
-            <option value="18">18h</option>
-            <option value="19">19h</option>
-            <option value="20">20h</option>
-            <option value="21">21h</option>
-            <option value="22">22h</option>
-        </select>
+        <div id="#painel" style="width: 80%; height: 600px; background-color: #e9e9e9; border-radius: 30px; margin-top: 15px;">
+            <div style="padding-top: 10px;">
 
-        <div class="btn btn-default" id="buscar">Buscar</div>
-        @*</div>
+                <select id="dia" style="border-radius: 8px; height: 35px; width: 100px; border-color: #ccc">
+                    <option value="seg">Segunda</option>
+                    <option value="ter">Terça</option>
+                    <option value="qua">Quarta</option>
+                    <option value="qui">Quinta</option>
+                    <option value="sex">Sexta</option>
+                </select>
+                <select id="hora" style="border-radius: 8px; height: 35px; width: 100px; border-color: #ccc">
+                    <option value="7">7h</option>
+                    <option value="8">8h</option>
+                    <option value="9">9h</option>
+                    <option value="10">10h</option>
+                    <option value="11">11h</option>
+                    <option value="12">12h</option>
+                    <option value="13">13h</option>
+                    <option value="14">14h</option>
+                    <option value="15">15h</option>
+                    <option value="16">16h</option>
+                    <option value="17">17h</option>
+                    <option value="18">18h</option>
+                    <option value="19">19h</option>
+                    <option value="20">20h</option>
+                    <option value="21">21h</option>
+                    <option value="22">22h</option>
+                </select>
 
-            <div id="rooms" class="col-md-8">*@
-        <ul id="rooms-list"></ul>
+                <div class="btn btn-default" id="buscar" style="border-radius: 8px; height: 35px; width: 100px; border-color: #ccc; margin-top: -2px;">Buscar</div>
+                @*
+            </div>
 
+            <div id="rooms" class="col-md-8">
+                *@
+               
+                <div style="margin: 0 auto; width: 400px;">
+                  <div id="rooms-list" style="text-align: left;">
+                
+                  </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
