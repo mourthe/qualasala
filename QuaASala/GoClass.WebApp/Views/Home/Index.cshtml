@@ -11,17 +11,17 @@
                 dataType: "json"
             }).done(function (data) {
                 $("#rooms-list").html("");
-                $("#rooms-list").append("<h4 style=\"text-align: center;\">Salas Frings </h4>");
+                $("#rooms-list").append("<h4 style=\"text-align: center; font-weight: bold;\">Salas Frings </h4>");
                 data.frings.forEach(function (room) {
                     $("#rooms-list").append(room + " ");
 
                 });
-                $("#rooms-list").append("<h4 style=\"text-align: center;\">Salas Leme </h4>");
+                $("#rooms-list").append("<h4 style=\"text-align: center; font-weight: bold;\">Salas Leme </h4>");
                 data.leme.forEach(function (room) {
                     $("#rooms-list").append(room + " ");
 
                 });
-                $("#rooms-list").append("<h4 style=\"text-align: center;\">Salas Kennedy </h4>");
+                $("#rooms-list").append("<h4 style=\"text-align: center; font-weight: bold; \">Salas Kennedy </h4>");
                 data.kennedy.forEach(function (room) {
                     $("#rooms-list").append(room + " ");
       
@@ -31,12 +31,13 @@
     };
 </script>
 
-<div class="row">
+<div class="row" style="font-family: Helvetica">
     <div class="col-md-4" style="width: 100%" align="center">
-        <div id="#painel" style="width: 80%; height: 600px; background-color: #e9e9e9; border-radius: 30px; margin-top: 15px;">
+        <div id="#painel" style="width: 60%; height: 550px; background-color: #e9e9e9; min-width: 410px; max-width:750px; border-radius: 30px; margin-top: 15px;">
             <div style="padding-top: 10px;">
-
-                <select id="dia" style="border-radius: 8px; height: 35px; width: 100px; border-color: #ccc">
+                <select id="dia" style="border-radius: 8px; height: 35px; width: 140px; border-color: #ccc">
+                    <option value="">Dia da Semana</option>
+                    <option value="seg">------------------</option>
                     <option value="seg">Segunda</option>
                     <option value="ter">Terça</option>
                     <option value="qua">Quarta</option>
@@ -44,6 +45,8 @@
                     <option value="sex">Sexta</option>
                 </select>
                 <select id="hora" style="border-radius: 8px; height: 35px; width: 100px; border-color: #ccc">
+                    <option value="">Hora</option>
+                    <option value="">--------------</option>
                     <option value="7">7h</option>
                     <option value="8">8h</option>
                     <option value="9">9h</option>
@@ -61,16 +64,9 @@
                     <option value="21">21h</option>
                     <option value="22">22h</option>
                 </select>
-
                 <div class="btn btn-default" id="buscar" style="border-radius: 8px; height: 35px; width: 100px; border-color: #ccc; margin-top: -2px;">Buscar</div>
-                @*
-            </div>
-
-            <div id="rooms" class="col-md-8">
-                *@
-               
                 <div style="margin: 0 auto; width: 400px;">
-                  <div id="rooms-list" style="text-align: left;">
+                  <div id="rooms-list" style="text-align: left; text-align: justify;">
                 
                   </div>
                 </div>
