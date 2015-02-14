@@ -66,6 +66,15 @@ namespace CreateDatabase
             }
         }
 
+        /// <summary>
+        /// Returns if the rooms is not available on the requested day
+        /// </summary>
+        /// <param name="day">Needs to follow patern: Monday = seg, Tuesday = ter, Wednesday = qua, Thursday = qui, Friday = sex</param>
+        public bool IsOccupiedThisDay(string day)
+        {
+            return !IsFreeThisDay(day);
+        }
+
         public static DbTuple MergeTwoTuples(DbTuple tuple1, DbTuple tuple2)
         {
             if (tuple1.Sala.Equals(tuple2.Sala) && tuple1.HorarioFin.Equals(tuple2.HorarioFin)

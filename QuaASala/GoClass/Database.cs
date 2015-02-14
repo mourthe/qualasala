@@ -10,15 +10,41 @@ namespace GoClass
     {
         private static List<DbTuple> _data;
 
+        private static List<string> _allRoomsList;
+    
         public static IList<string> GetRoomsFrom(string hour, string day)
         {
             if (_data == null) 
             {
                 LoadDb();
             }
+            if (_allRoomsList == null)
+            {
+                LoadRoomList();
+            }
             
-            // foreach line on the file 
-            return (from t in _data where TimeBelongToInterval(t, hour) && t.IsFreeThisDay(day) select t.Sala).ToList();           
+            // get all the occupied rooms for that time of day
+            var occupiedRooms = (from t in _data where TimeBelongToInterval(t, hour) 
+                        && t.IsOccupiedThisDay(day) select t.Sala).ToList();
+
+            // diff the occupiedRooms from the _allRoomsList
+            return _allRoomsList.Where(r => !occupiedRooms.Contains(r)).ToList();
+        }
+
+        private static void LoadRoomList()
+        {
+            // mudar para relativo
+            var reader = new StreamReader(@"C:\Users\Fabio\Documents\GitHub\qualasala\docs\Nomes_de_salas_premitidas.txt");
+            _allRoomsList = new List<string>();
+
+            while (!reader.EndOfStream)
+            {
+                var line = reader.ReadLine();
+
+                if (line == null) continue;
+
+                _allRoomsList.Add(line);
+            }
         }
 
         private static bool TimeBelongToInterval(DbTuple t, string hour)
@@ -29,7 +55,7 @@ namespace GoClass
 
         private static void LoadDb()
         {
-            var reader = new StreamReader(@"C:\Users\Fabio\Documents\GitHub\qualasala\QuaASala\GoClass\Database\Tabela_Salas.csv");
+            var reader = new StreamReader(@"\Tabela_Salas.csv");
             _data = new List<DbTuple>();
 
             while (!reader.EndOfStream)
